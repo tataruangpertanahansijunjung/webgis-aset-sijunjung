@@ -723,3 +723,13 @@ window.addEventListener("load", initGeoJSONDashboard);
   var active=document.querySelector(".portal-nav-btn.active");
   activatePortalPage(active ? active.getAttribute("data-portal") : "beranda", active);
 })();
+
+// Menu filter geser pada HP
+(function(){
+const btn=document.getElementById("mobileMenuBtn"),side=document.querySelector(".dash-sidebar"),overlay=document.getElementById("mobileOverlay");
+if(!btn||!side||!overlay)return;
+function closeMenu(){side.classList.remove("mobile-open");overlay.classList.remove("show");btn.textContent="☰";}
+btn.onclick=function(){const open=side.classList.toggle("mobile-open");overlay.classList.toggle("show",open);btn.textContent=open?"×":"☰";};
+overlay.onclick=closeMenu;
+window.addEventListener("resize",function(){if(innerWidth>768)closeMenu();});
+})();
