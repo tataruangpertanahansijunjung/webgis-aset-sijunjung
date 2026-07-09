@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+
+<title>WebGIS Aset Tanah Kabupaten Sijunjung</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/ol@v10.6.1/ol.css">
+
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+</head>
+
+<body>
+<div id="landingPage" class="landing-page">
+  <main class="portal-card">
+    <section class="portal-left">
+      <div class="portal-identity">
+        <div class="mini-logo"><img src="img/LogoSijunjung.jpeg" alt="Logo Kabupaten Sijunjung"></div>
+        <div class="mini-logo logo-silokek"><img src="img/LogoSilokek.png" alt="Logo Silokek"></div>
+        <div class="identity-text">
+          <span>WEBGIS PORTAL ASET</span>
+          <strong>KABUPATEN<br>SIJUNJUNG</strong>
+        </div>
+      </div>
+
+      <div class="portal-title">
+        <h1>SISTEM INFORMASI<br>GEOGRAFIS</h1>
+        <span>ASET TANAH PEMERINTAH</span>
+      </div>
+
+      <p class="portal-description">
+        Portal terpadu untuk pendataan, monitoring fisik, dan keterbukaan informasi
+        kepemilikan aset tanah di bawah naungan Dinas Pekerjaan Umum dan Penataan
+        Ruang Kabupaten Sijunjung.
+      </p>
+
+      <div class="portal-agency">
+        <b>Penyelenggara Teknis:</b><br>
+        Bidang Penataan Ruang &amp; Pertanahan
+      </div>
+    </section>
+
+    <section class="portal-right">
+      <nav class="portal-nav">
+        <button class="portal-nav-btn active" data-portal="beranda">🏠 <span>Beranda</span></button>
+        <button class="portal-nav-btn" data-portal="tentang">📖 <span>Tentang</span></button>
+        <button class="portal-nav-btn" data-portal="panduan">❓ <span>Panduan</span></button>
+        <button class="portal-nav-btn" data-portal="kontak">☎ <span>Kontak</span></button>
+      </nav>
+
+      <div class="portal-pages">
+        <article id="portal-beranda" class="portal-page active">
+          <div class="portal-update">✣ &nbsp; PEMBARUAN VERSI 1.0 (AKTIF)</div>
+          <h2>Selamat Datang di Portal GIS</h2>
+          <p>
+            Aplikasi ini menyajikan visualisasi interaktif dari peta batas administrasi
+            kecamatan dan rincian fisik tanah negara di Kabupaten Sijunjung, lengkap
+            dengan klasifikasi fungsi (Pendidikan, Kesehatan, Perkantoran, dsb.) serta
+            status kepemilikan sertifikat resmi.
+          </p>
+
+          <div class="portal-stats">
+            <div class="stat-card">
+              <small>Total Aset Terdata</small>
+              <strong><span id="landingTotal">Memuat...</span> Bidang</strong>
+            </div>
+            
+          </div>
+        </article>
+
+        <article id="portal-tentang" class="portal-page">
+<div class="portal-update">✣ &nbsp; TENTANG WEBGIS</div>
+<h2>Sistem Informasi Geografis Aset Tanah</h2>
+<p>Sistem Informasi Geografis ini dibangun untuk mempermudah pemetaan aset tanah milik Pemerintah Kabupaten Sijunjung secara dinamis.</p>
+<div class="info-box">Dikembangkan secara kolaboratif oleh Dinas Pekerjaan Umum dan Penataan Ruang demi mendukung tertib administrasi pertanahan yang akurat dan terbuka bagi dinas terkait.</div>
+</article>
+
+        <article id="portal-panduan" class="portal-page">
+<div class="portal-update">✣ &nbsp; PANDUAN PENGGUNAAN</div>
+<h2>Cara Menggunakan WebGIS</h2>
+<ol class="guide-list">
+<li>Tekan <b>“Masuk ke WebGIS”</b> untuk beralih ke dashboard peta.</li>
+<li>Gunakan <b>Kolom Pencarian</b> di kiri atas untuk mencari aset tanah berdasarkan nama instansi.</li>
+<li>Klik poligon berwarna di peta untuk memunculkan panel rincian spesifikasi tanah tersebut.</li>
+<li>Gunakan panel melayang di kanan untuk mengganti <b>Basemap</b>, mengaktifkan <b>GPS lokasi Anda</b>, atau reset sudut pandang kamera.</li>
+</ol></article>
+
+        <article id="portal-kontak" class="portal-page">
+<div class="portal-update">✣ &nbsp; HUBUNGI KAMI</div>
+<h2>Kontak Pengelola</h2>
+<div class="contact-list">
+<p>📍 Jalan Ir. Juanda No. 24, Muaro Sijunjung</p>
+<p>☎ (0754) 20090</p>
+<p>🌐 <a href="http://www.sijunjung.go.id" target="_blank" rel="noopener">www.sijunjung.go.id</a></p>
+<p>✉ pdet@sijunjung.go.id</p>
+</div></article>
+      </div>
+
+      <footer class="portal-footer">
+        <div>© 2026 Pemerintah Kab. Sijunjung<br><span>All Rights Reserved.</span></div>
+        <button id="startBtn">Masuk ke WebGIS <b>→</b></button>
+      </footer>
+    </section>
+  </main>
+</div>
+<div id="dashboardUI" class="dashboard-ui">
+  <aside class="dash-sidebar">
+    <div class="dash-brand">
+      <div class="dash-logo"><img src="img/LogoSijunjung.jpeg" alt="Logo Kabupaten Sijunjung"></div>
+      <div><b>WebGIS Aset Sijunjung</b><small>KABUPATEN SIJUNJUNG</small></div>
+    </div>
+
+    <div class="dash-section">
+      <h3>CARI NAMA ASET</h3>
+      <div class="dash-search">⌕<input type="text" id="search" list="asetList" placeholder="Cari e.g., RSUD, SMP ..."><datalist id="asetList"></datalist></div>
+    </div>
+
+    <div class="dash-section">
+      <h3>▽ &nbsp;FILTER WILAYAH &amp; JENIS</h3>
+      <label>Kecamatan</label>
+      <select id="filterKecamatan"><option value="">Semua Kecamatan</option></select>
+
+      <label>Status Sertifikat</label>
+      <div class="segmented">
+        <button class="status-filter active" data-status="">Semua</button>
+        <button class="status-filter" data-status="sertifikat">Sertifikat</button>
+        <button class="status-filter" data-status="belum">Belum</button>
+      </div>
+
+      <label>Kategori Aset</label>
+      <div id="categoryFilters" class="category-chips"></div>
+    </div>
+
+    <div class="dash-section analytics">
+      <h3>⌁ &nbsp;ANALITIK &amp; STATISTIK</h3>
+      <div class="stat-grid">
+        <div><small>TERPILIH</small><b id="statJumlah">0</b><span> bidang</span></div>
+        <div><small>LUAS TOTAL</small><b id="statLuas">0</b><span> m²</span></div>
+      </div>
+      
+    </div>
+  </aside>
+
+  <div class="dash-topbar">
+    <b>CEPAT:</b>
+    <div id="quickKecamatan" class="quick-list"></div>
+  </div>
+
+  <div class="dash-badge"><i></i><b>KAB. SIJUNJUNG</b><small>Peta Sebaran Aset</small></div>
+
+  <div class="dash-tools">
+    <button id="btnBasemap" title="Pilih Basemap"><i class="ph ph-stack"></i></button>
+    <button id="locateBtn" title="Lokasi Saya"><i class="ph ph-crosshair"></i></button>
+    <button id="homeBtn" title="Kembali ke Tampilan Awal"><i class="ph ph-house-simple"></i></button>
+    <button id="infoBtn" title="Informasi"><i class="ph ph-info"></i></button>
+    <button id="legendBtn" title="Legenda"><i class="ph ph-book-open"></i></button>
+  </div>
+
+  <div id="basemapMenu" class="basemap-menu">
+    <div class="basemap-title"><i class="ph ph-stack"></i> Basemap</div>
+    <button id="btnEsri" class="base-btn active"><i class="ph ph-image-square"></i> ESRI Satellite</button>
+    <button id="btnGoogle" class="base-btn"><i class="ph ph-map-trifold"></i> Google Road</button>
+  </div>
+
+  <div id="dashLegend" class="dash-legend">
+    <b>LEGENDA</b>
+    <div><span class="dot pendidikan"></span>Pendidikan</div>
+    <div><span class="dot kesehatan"></span>Kesehatan</div>
+    <div><span class="dot perkantoran"></span>Perkantoran</div>
+    <div><span class="dot perdagangan"></span>Perdagangan</div>
+    <div><span class="dot transportasi"></span>Transportasi</div>
+    <div><span class="dot rumah"></span>Rumah Dinas</div>
+    <div><span class="dot lainnya"></span>Lainnya</div>
+  </div>
+</div>
+    <div id="map"></div>
+
+    <div id="popup" class="ol-popup">
+        <div id="popup-content"></div>
+    </div>
+<div id="infoSidebar" class="info-sidebar">
+
+    <div class="info-header">
+
+        <span>Informasi WebGIS</span>
+
+        <button id="closeInfo">
+
+            <i class="ph ph-x"></i>
+
+        </button>
+
+    </div>
+
+    <div class="info-tabs">
+
+        <button class="tab-btn active"
+                data-tab="tentang">
+
+            Tentang
+
+        </button>
+
+        <button class="tab-btn"
+                data-tab="kontak">
+
+            Kontak
+
+        </button>
+
+        <button class="tab-btn"
+                data-tab="panduan">
+
+            Panduan
+
+        </button>
+
+    </div>
+
+    <div class="info-content">
+
+        <!-- TAB TENTANG -->
+
+        <div id="tentang" class="tab-content active">
+<h2>Sistem Informasi Geografis Aset Tanah</h2>
+<p>Sistem Informasi Geografis ini dibangun untuk mempermudah pemetaan aset tanah milik Pemerintah Kabupaten Sijunjung secara dinamis.</p>
+<hr>
+<p>Dikembangkan secara kolaboratif oleh Dinas Pekerjaan Umum dan Penataan Ruang demi mendukung tertib administrasi pertanahan yang akurat dan terbuka bagi dinas terkait.</p>
+</div>
+<!-- TAB KONTAK -->
+
+        <div id="kontak" class="tab-content">
+<h3>Kontak</h3>
+<p>📍 Jalan Ir. Juanda No. 24, Muaro Sijunjung</p>
+<p>☎ (0754) 20090</p>
+<p>🌐 Website: <a href="http://www.sijunjung.go.id" target="_blank" rel="noopener">www.sijunjung.go.id</a></p>
+<p>✉ Email: pdet@sijunjung.go.id</p>
+</div>
+<!-- TAB PANDUAN -->
+
+        <div id="panduan"
+             class="tab-content">
+
+            <h3>Panduan</h3>
+
+            <ol>
+
+                <li>Cari nama aset pada kolom pencarian.</li>
+
+                <li>Klik aset untuk melihat informasi detail.</li>
+
+                <li>Gunakan Basemap untuk mengganti tampilan peta.</li>
+
+                <li>Gunakan Lokasi Saya untuk mengetahui posisi pengguna.</li>
+
+                <li>Klik Home untuk kembali ke tampilan awal.</li>
+
+            </ol>
+
+        </div>
+
+    </div>
+
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/ol@v10.6.1/dist/ol.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
