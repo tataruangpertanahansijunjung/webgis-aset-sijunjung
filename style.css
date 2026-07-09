@@ -1402,3 +1402,66 @@ max-width:90%;
 .info-content a{color:#2563eb;text-decoration:none}
 .info-content ol{padding-left:22px;line-height:1.8}
 .info-content li{margin-bottom:9px}
+@media (max-width: 900px) {
+  html,
+  body {
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .landing-page {
+    position: absolute;
+    min-height: 100vh;
+    height: auto;
+    overflow-y: auto;
+    align-items: flex-start;
+  }
+
+  .portal-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto !important;
+    min-height: 100vh;
+    overflow: visible;
+    border-radius: 0;
+  }
+
+  .portal-left {
+    min-height: auto;
+    padding: 25px 22px 30px;
+  }
+
+  .portal-title {
+    margin-top: 40px;
+  }
+
+  .portal-title h1 {
+    font-size: 28px;
+  }
+
+  .portal-description {
+    margin-top: 30px;
+  }
+
+  .portal-agency {
+    margin-top: 35px;
+  }
+
+  .portal-right {
+    min-height: 620px;
+    padding: 25px 22px;
+  }
+
+  .portal-footer {
+    margin-top: 40px;
+  }
+
+  #startBtn {
+    display: block;
+    width: 100%;
+    min-height: 52px;
+  }
+}
