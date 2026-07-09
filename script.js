@@ -724,12 +724,30 @@ window.addEventListener("load", initGeoJSONDashboard);
   activatePortalPage(active ? active.getAttribute("data-portal") : "beranda", active);
 })();
 
-// Menu filter geser pada HP
+// ===== KONTROL SIDEBAR MOBILE =====
 (function(){
-const btn=document.getElementById("mobileMenuBtn"),side=document.querySelector(".dash-sidebar"),overlay=document.getElementById("mobileOverlay");
-if(!btn||!side||!overlay)return;
-function closeMenu(){side.classList.remove("mobile-open");overlay.classList.remove("show");btn.textContent="☰";}
-btn.onclick=function(){const open=side.classList.toggle("mobile-open");overlay.classList.toggle("show",open);btn.textContent=open?"×":"☰";};
-overlay.onclick=closeMenu;
-window.addEventListener("resize",function(){if(innerWidth>768)closeMenu();});
+  var btn=document.getElementById("mobileMenuBtn");
+  var sidebar=document.querySelector(".dash-sidebar");
+  var overlay=document.getElementById("mobileOverlay");
+  if(!btn||!sidebar||!overlay)return;
+  function closeMobileMenu(){
+    sidebar.classList.remove("mobile-open");
+    overlay.classList.remove("show");
+    btn.textContent="☰";
+  }
+  btn.addEventListener("click",function(e){
+    e.stopPropagation();
+    var open=!sidebar.classList.contains("mobile-open");
+    sidebar.classList.toggle("mobile-open",open);
+    overlay.classList.toggle("show",open);
+    btn.textContent=open?"×":"☰";
+  });
+  overlay.addEventListener("click",closeMobileMenu);
+  window.addEventListener("resize",function(){
+    if(window.innerWidth>768)closeMobileMenu();
+    if(typeof map!=="undefined")setTimeout(function(){map.updateSize()},100);
+  });
+  document.getElementById("startBtn").addEventListener("click",function(){
+    if(typeof map!=="undefined")setTimeout(function(){map.updateSize()},700);
+  });
 })();

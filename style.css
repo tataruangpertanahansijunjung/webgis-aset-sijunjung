@@ -1402,22 +1402,101 @@ max-width:90%;
 .info-content a{color:#2563eb;text-decoration:none}
 .info-content ol{padding-left:22px;line-height:1.8}
 .info-content li{margin-bottom:9px}
+@media (max-width: 900px) {
+  html,
+  body {
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
 
-/* ===== TAMPILAN DASHBOARD KHUSUS HP ===== */
+  .landing-page {
+    position: absolute;
+    min-height: 100vh;
+    height: auto;
+    overflow-y: auto;
+    align-items: flex-start;
+  }
+
+  .portal-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto !important;
+    min-height: 100vh;
+    overflow: visible;
+    border-radius: 0;
+  }
+
+  .portal-left {
+    min-height: auto;
+    padding: 25px 22px 30px;
+  }
+
+  .portal-title {
+    margin-top: 40px;
+  }
+
+  .portal-title h1 {
+    font-size: 28px;
+  }
+
+  .portal-description {
+    margin-top: 30px;
+  }
+
+  .portal-agency {
+    margin-top: 35px;
+  }
+
+  .portal-right {
+    min-height: 620px;
+    padding: 25px 22px;
+  }
+
+  .portal-footer {
+    margin-top: 40px;
+  }
+
+  #startBtn {
+    display: block;
+    width: 100%;
+    min-height: 52px;
+  }
+}
+/* ===== FIX MOBILE SAJA - DESKTOP TIDAK BERUBAH ===== */
 .mobile-menu-btn,.mobile-overlay{display:none}
-@media(max-width:768px){
-html,body{width:100%;height:100%;overflow:hidden!important}
-#map{position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;margin:0!important}
-.dash-sidebar{position:fixed!important;left:0!important;top:0!important;bottom:0!important;width:min(86vw,340px)!important;height:100dvh!important;z-index:5002!important;overflow-y:auto!important;transform:translateX(-105%);transition:transform .28s ease;box-shadow:14px 0 38px rgba(0,0,0,.45)}
-.dash-sidebar.mobile-open{transform:translateX(0)}
-.mobile-menu-btn{display:grid;place-items:center;position:fixed;z-index:5003;left:10px;top:12px;width:44px;height:44px;border:1px solid #3b82f6;border-radius:12px;background:#1765f5;color:#fff;font-size:22px}
-.mobile-overlay{display:block;position:fixed;inset:0;z-index:5001;background:rgba(2,8,23,.48);opacity:0;visibility:hidden;transition:.25s}
-.mobile-overlay.show{opacity:1;visibility:visible}
-.dash-topbar{left:64px!important;right:10px!important;top:12px!important;width:auto!important;max-width:none!important;height:44px!important;box-sizing:border-box;padding:6px 10px!important;overflow:hidden}
-.dash-topbar>b{display:none}.quick-list{width:100%;overflow-x:auto!important;gap:3px!important}.quick-list button{padding:5px 8px!important;font-size:8px!important}
-.dash-badge{display:none!important}
-.dash-tools{right:10px!important;top:70px!important;gap:8px!important}
-.dash-tools button,.dash-tools button:first-child{width:45px!important;height:45px!important;margin:0!important;border-radius:50%!important;font-size:18px!important}
-.basemap-menu{right:64px!important;top:70px!important}.dash-legend{right:64px!important;top:270px!important;max-height:45vh;overflow:auto}
-.ol-zoom{left:10px!important;top:70px!important}.ol-scale-line{left:10px!important}
+@media (max-width:768px){
+  html,body{width:100%!important;height:100%!important;overflow:hidden!important}
+  #map{position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;margin:0!important}
+  .dash-sidebar{
+    position:fixed!important;top:0!important;left:0!important;bottom:0!important;
+    width:min(86vw,340px)!important;height:100dvh!important;z-index:10002!important;
+    overflow-y:auto!important;transform:translateX(-105%)!important;
+    transition:transform .28s ease!important;box-shadow:14px 0 38px rgba(0,0,0,.45)
+  }
+  .dash-sidebar.mobile-open{transform:translateX(0)!important}
+  .mobile-menu-btn{
+    display:grid!important;place-items:center;position:fixed;top:12px;left:10px;
+    width:44px;height:44px;z-index:10003;border:0;border-radius:12px;
+    background:#1765f5;color:#fff;font-size:22px;box-shadow:0 7px 20px rgba(0,0,0,.3)
+  }
+  .mobile-overlay{
+    display:block;position:fixed;inset:0;z-index:10001;background:rgba(2,8,23,.48);
+    opacity:0;visibility:hidden;transition:.25s
+  }
+  .mobile-overlay.show{opacity:1;visibility:visible}
+  .dash-topbar{left:64px!important;right:10px!important;top:12px!important;width:auto!important;max-width:none!important;height:44px!important;padding:6px 8px!important;overflow:hidden!important}
+  .dash-topbar>b{display:none!important}
+  .quick-list{width:100%!important;overflow-x:auto!important;white-space:nowrap!important}
+  .quick-list button{flex:0 0 auto!important;font-size:8px!important;padding:5px 7px!important}
+  .dash-badge{display:none!important}
+  .dash-tools{position:fixed!important;top:70px!important;right:10px!important;left:auto!important;z-index:4000!important;gap:8px!important}
+  .dash-tools button{width:44px!important;height:44px!important;margin:0!important}
+  .basemap-menu{position:fixed!important;top:70px!important;right:62px!important;max-width:calc(100vw - 80px)!important}
+  .dash-legend{position:fixed!important;right:62px!important;top:270px!important;max-width:calc(100vw - 80px)!important;max-height:45vh!important;overflow:auto!important}
+  .info-sidebar{width:min(92vw,360px)!important}
+  .ol-zoom{top:70px!important;left:10px!important}
+  .ol-popup{min-width:0!important;width:calc(100vw - 40px)!important;max-width:320px!important;box-sizing:border-box!important}
 }
